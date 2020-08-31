@@ -20,14 +20,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="source\cube.cpp" />
     <ClCompile Include="source\game.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\renderer.cpp" />
+    <ClCompile Include="source\resource_manager.cpp" />
+    <ClCompile Include="source\shader.cpp" />
+    <ClCompile Include="source\texture.cpp" />
     <ClCompile Include="stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\camera.h" />
+    <ClInclude Include="source\cube.h" />
     <ClInclude Include="source\game.h" />
+    <ClInclude Include="source\renderer.h" />
+    <ClInclude Include="source\resource_manager.h" />
     <ClInclude Include="source\shader.h" />
+    <ClInclude Include="source\texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\objectFS.glsl" />

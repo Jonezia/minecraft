@@ -30,6 +30,21 @@
     <ClCompile Include="source\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\resource_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\shader.h">
@@ -39,6 +54,18 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="source\game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\resource_manager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\texture.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\renderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\cube.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 
 #include "game.h"
+#include "resource_manager.h"
 
 #include <iostream>
 
@@ -89,6 +90,7 @@ int main()
     }
 
     // de-allocate all resources once they've outlived their purpose:
+    ResourceManager::Clear();
 
     // glfw: terminate, clearing all previously allocated GLFW resources.
     glfwTerminate();
