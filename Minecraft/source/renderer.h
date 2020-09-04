@@ -1,5 +1,5 @@
-#ifndef SPRITE_RENDERER_H
-#define SPRITE_RENDERER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
