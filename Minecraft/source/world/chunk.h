@@ -3,18 +3,35 @@
 
 #include <array>
 #include <glm/glm.hpp>
+#include <unordered_map>
 
-#include "world_constants.h"
+#include "../maths/vector_hash.h"
+#include "block.h"
 
-using chunkDataContainer = std::array<int, 3 * CHUNK_VOLUME>;
+class World;
+
+using ChunkData = std::unordered_map<glm::vec3, Block>;
 
 class Chunk
 {
 public:
-	Chunk() = default;
-	Chunk(chunkDataContainer chunkData);
+	Chunk(World &world, VectorXZ pos);
+
+	void load();
+	
+	bool chunkOnFile();
+	void saveToFile();
+
+	bool blockExistsAt(int x, int y, int z);
+
+	ChunkData getBlocks();
+	Block getBlock(int x, int y, int z);
+
+	bool loaded;
 private:
-	chunkDataContainer chunk_data;
+	VectorXZ position;
+	World* world;
+	ChunkData blocks;
 };
 
 #endif

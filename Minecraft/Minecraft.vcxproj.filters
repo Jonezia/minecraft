@@ -16,6 +16,12 @@
     <Filter Include="Source Files\shaders">
       <UniqueIdentifier>{e3177a63-d1d1-4308-9470-68c5598aa402}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\world">
+      <UniqueIdentifier>{76661aa3-2de1-4f40-a89f-0d48c1fbc276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\maths">
+      <UniqueIdentifier>{9a3510c0-91a1-4e78-9547-9fc98dcb71d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -45,8 +51,23 @@
     <ClCompile Include="source\cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\mesh.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="source\world\mesh.cpp">
+      <Filter>Source Files\world</Filter>
+    </ClCompile>
+    <ClCompile Include="source\world\world.cpp">
+      <Filter>Source Files\world</Filter>
+    </ClCompile>
+    <ClCompile Include="source\world\chunk.cpp">
+      <Filter>Source Files\world</Filter>
+    </ClCompile>
+    <ClCompile Include="source\world\chunk_manager.cpp">
+      <Filter>Source Files\world</Filter>
+    </ClCompile>
+    <ClCompile Include="source\maths\vector_hash.cpp">
+      <Filter>Source Files\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="source\world\block.cpp">
+      <Filter>Source Files\world</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,8 +92,29 @@
     <ClInclude Include="source\cube.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\mesh.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="source\world\mesh.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\vertex.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\world_constants.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\world.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\chunk.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\chunk_manager.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\maths\vector_hash.h">
+      <Filter>Source Files\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\block.h">
+      <Filter>Source Files\world</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

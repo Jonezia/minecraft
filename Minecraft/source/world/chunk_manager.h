@@ -6,15 +6,29 @@
 #include "chunk.h"
 #include "../maths/vector_hash.h"
 
+class World;
+
+using ChunkMap = std::unordered_map<VectorXZ, Chunk>;
+
 class ChunkManager
 {
 public:
-	ChunkManager() = default;
+	ChunkManager(World &world);
+	
+	void loadChunk(int x, int z);
+	void unloadChunk(int x, int z);
+	
+	bool chunkExistsAt(int x, int z);
+	bool chunkLoaded(int x, int z);
+
+	ChunkMap getChunks();
+	Chunk getChunk(int x, int z);
+
 	void clear();
-	void addChunk(VectorXZ pos, Chunk chunk);
-	void addChunk(int x, int z, Chunk chunk);
+
 private:
-	std::unordered_map<VectorXZ, Chunk> chunks;
+	ChunkMap chunks;
+	World* world;
 };
 
 #endif
