@@ -27,6 +27,8 @@ public:
 	ChunkData getBlocks();
 	Block getBlock(int x, int y, int z);
 
+	glm::vec3 getPosition();
+
 	bool loaded;
 private:
 	VectorXZ position;

@@ -2,9 +2,14 @@
 
 ChunkManager::ChunkManager(World& world) : world(&world) {}
 
-void ChunkManager::loadChunk(int x, int z)
+bool ChunkManager::loadChunk(int x, int z)
 {
-	getChunk(x, z).load();
+	if (!chunkLoaded(x, z))
+	{
+		getChunk(x, z).load();
+		return true;
+	}
+	return false;
 }
 
 void ChunkManager::unloadChunk(int x, int z)
@@ -37,6 +42,11 @@ Chunk ChunkManager::getChunk(int x, int z)
 		chunks.emplace(key, std::move(chunk));
 	}
 	return chunks[key];
+}
+
+bool ChunkManager::makeMesh(int x, int z, Camera player)
+{
+	getChunk(x, z).makeMesh(player);
 }
 
 void ChunkManager::clear()

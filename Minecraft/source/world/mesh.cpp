@@ -2,14 +2,14 @@
 #include "world_constants.h"
 
 Mesh::~Mesh() {
-    this->vertices.clear();
+    vertices.clear();
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
 }
 
-void Mesh::addFace(const std::array<Vertex,4> vertexData,
-    const glm::vec3& chunkPosition,
-    const glm::vec3& blockPosition)
+void Mesh::addFace(const std::array<Vertex,4> &vertexData,
+    const glm::vec3 &chunkPosition,
+    const glm::vec3 &blockPosition)
 {
     int posx = chunkPosition.x * CHUNK_SIZE + blockPosition.x;
     int posy = chunkPosition.y * CHUNK_SIZE + blockPosition.y;
@@ -21,15 +21,25 @@ void Mesh::addFace(const std::array<Vertex,4> vertexData,
                 vertexData[i].texCoords
             ));
     }
+    indices.insert(indices.end(),
+        {index, index + 1, index + 2,
+         index + 2, index + 3, index });
+    index += 4;
 }
 
 void Mesh::bufferMesh() {
+    index = 0;
+
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
 
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER, EBO);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_STATIC_DRAW);
 
     // position attribute

@@ -49,3 +49,8 @@ Block Chunk::getBlock(int x, int y, int z)
 		return this->blocks[glm::vec3(x, y, z)].getId();
 	}
 }
+
+glm::vec3 Chunk::getPosition()
+{
+	return glm::vec3(position.x, 0, position.z);
+}

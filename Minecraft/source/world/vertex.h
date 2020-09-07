@@ -8,6 +8,7 @@ struct Vertex {
 	glm::vec2 texCoords;
 	Vertex(glm::vec3 aposition, glm::vec2 atexCoords) :
 		position(aposition), texCoords(atexCoords) {}
+	Vertex() = default;
 };
 
 #endif

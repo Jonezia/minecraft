@@ -5,6 +5,7 @@
 
 #include "chunk.h"
 #include "../maths/vector_hash.h"
+#include "../camera.h"
 
 class World;
 
@@ -15,7 +16,7 @@ class ChunkManager
 public:
 	ChunkManager(World &world);
 	
-	void loadChunk(int x, int z);
+	bool loadChunk(int x, int z);
 	void unloadChunk(int x, int z);
 	
 	bool chunkExistsAt(int x, int z);
@@ -23,6 +24,8 @@ public:
 
 	ChunkMap getChunks();
 	Chunk getChunk(int x, int z);
+
+	bool makeMesh(int x, int z, Camera player);
 
 	void clear();
 

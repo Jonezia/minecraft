@@ -12,14 +12,15 @@ class Mesh
 public:
 	Mesh() = default;
 	~Mesh();
-	void addFace(const std::array<Vertex,4> vertexData,
-		const glm::vec3& chunkPosition,
-		const glm::vec3& blockPosition);
+	void addFace(const std::array<Vertex,4> &vertexData,
+		const glm::vec3 &chunkPosition,
+		const glm::vec3 &blockPosition);
 	void bufferMesh();
 private:
 	std::vector<Vertex> vertices;
-	unsigned int VAO, VBO;
-
+	std::vector<int> indices;
+	int index;
+	unsigned int VAO, VBO, EBO;
 };
 
 #endif

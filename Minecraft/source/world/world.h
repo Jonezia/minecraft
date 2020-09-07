@@ -10,9 +10,14 @@ class World
 {
 public:
 	World();
+	glm::vec3 setSpawn(Camera player);
+	bool updateCurrentChunk(Camera player);
+	void loadSurroundingChunks(Camera player);
 	void render(Renderer renderer, Camera player);
 private:
 	ChunkManager chunk_manager;
+	int currentChunkX;
+	int currentChunkZ;
 };
 
 #endif

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -31,6 +31,7 @@
     <ClCompile Include="source\world\block.cpp" />
     <ClCompile Include="source\world\chunk.cpp" />
     <ClCompile Include="source\world\chunk_manager.cpp" />
+    <ClCompile Include="source\world\chunk_mesh_builder.cpp" />
     <ClCompile Include="source\world\mesh.cpp" />
     <ClCompile Include="source\world\world.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="source\world\block.h" />
     <ClInclude Include="source\world\chunk.h" />
     <ClInclude Include="source\world\chunk_manager.h" />
+    <ClInclude Include="source\world\chunk_mesh_builder.h" />
     <ClInclude Include="source\world\mesh.h" />
     <ClInclude Include="source\world\vertex.h" />
     <ClInclude Include="source\world\world.h" />
