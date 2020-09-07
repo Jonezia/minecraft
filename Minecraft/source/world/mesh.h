@@ -6,6 +6,7 @@
 #include <array>
 
 #include "vertex.h"
+#include "../texture.h"
 
 class Mesh
 {
@@ -16,11 +17,12 @@ public:
 		const glm::vec3 &chunkPosition,
 		const glm::vec3 &blockPosition);
 	void bufferMesh();
-private:
+	unsigned int VAO;
 	std::vector<Vertex> vertices;
+private:
 	std::vector<int> indices;
 	int index;
-	unsigned int VAO, VBO, EBO;
+	unsigned int VBO, EBO;
 };
 
 #endif

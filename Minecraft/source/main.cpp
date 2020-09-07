@@ -66,6 +66,8 @@ int main()
     float deltaTime = 0.0f;	// time between current frame and last frame
     float lastFrame = 0.0f;
 
+    glEnable(GL_CULL_FACE);
+
     // render loop
     // -----------
     while (!glfwWindowShouldClose(window))

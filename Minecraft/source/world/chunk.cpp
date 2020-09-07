@@ -1,7 +1,10 @@
 #include "chunk.h"
-#include "world_constants.h"
 
-Chunk::Chunk(World& world, VectorXZ pos) : world(&world), position(pos) {}
+#include "world_constants.h"
+#include "chunk_mesh_builder.h"
+
+Chunk::Chunk(World& world, VectorXZ pos) : world(&world), position(pos),
+	loaded(false), hasMesh(false) {}
 
 void Chunk::load()
 {
@@ -53,4 +56,22 @@ Block Chunk::getBlock(int x, int y, int z)
 glm::vec3 Chunk::getPosition()
 {
 	return glm::vec3(position.x, 0, position.z);
+}
+
+bool Chunk::makeMesh(Camera &player)
+{	
+	if (hasMesh) {
+		return false;
+	}
+	else {
+		// check if in camera frustrum
+		ChunkMeshBuilder(*this, mesh).buildMesh();
+		return true;
+	}
+}
+
+void Chunk::drawChunk(Renderer &renderer, Camera &player)
+{
+	// if in view
+	renderer.drawChunk(mesh, player.GetViewMatrix());
 }

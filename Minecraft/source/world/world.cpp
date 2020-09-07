@@ -33,10 +33,10 @@ void World::loadSurroundingChunks(Camera player)
     for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
         Chunk& chunk = itr->second;
 
-        int minX = currentChunkX - RENDER_DISTANCE;
-        int minZ = currentChunkZ - RENDER_DISTANCE;
-        int maxX = currentChunkX + RENDER_DISTANCE;
-        int maxZ = currentChunkZ + RENDER_DISTANCE;
+        int minX = currentChunkX - LOAD_DISTANCE;
+        int minZ = currentChunkZ - LOAD_DISTANCE;
+        int maxX = currentChunkX + LOAD_DISTANCE;
+        int maxZ = currentChunkZ + LOAD_DISTANCE;
 
         auto location = chunk.getPosition();
 
@@ -44,6 +44,8 @@ void World::loadSurroundingChunks(Camera player)
             maxX < location.x) {
             itr = chunkMap.erase(itr);
         }
+
+        itr++;
     }
 
     for (int i = -LOAD_DISTANCE; i < LOAD_DISTANCE + 1; i++) {

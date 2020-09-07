@@ -7,6 +7,9 @@
 
 #include "../maths/vector_hash.h"
 #include "block.h"
+#include "../camera.h"
+#include "../renderer.h"
+#include "mesh.h"
 
 class World;
 
@@ -29,11 +32,17 @@ public:
 
 	glm::vec3 getPosition();
 
+	bool makeMesh(Camera &player);
+
+	void drawChunk(Renderer &renderer, Camera &player);
+
 	bool loaded;
+	bool hasMesh;
 private:
 	VectorXZ position;
 	World* world;
 	ChunkData blocks;
+	Mesh mesh;
 };
 
 #endif

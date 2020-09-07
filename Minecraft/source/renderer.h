@@ -7,6 +7,7 @@
 
 #include "texture.h"
 #include "shader.h"
+#include "world/mesh.h"
 
 class Renderer
 {
@@ -17,6 +18,7 @@ public:
     ~Renderer();
     // Renders a defined quad textured with given sprite
     void DrawCube(Texture2D& texture, glm::vec3 position, glm::mat4 viewMatrix, glm::vec3 color = glm::vec3(1.0f));
+    void drawChunk(const Mesh& mesh, glm::mat4 viewMatrix);
 private:
     // Render state
     Shader       shader;

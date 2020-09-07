@@ -44,7 +44,7 @@ Chunk ChunkManager::getChunk(int x, int z)
 	return chunks[key];
 }
 
-bool ChunkManager::makeMesh(int x, int z, Camera player)
+bool ChunkManager::makeMesh(int x, int z, Camera &player)
 {
 	getChunk(x, z).makeMesh(player);
 }

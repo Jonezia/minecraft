@@ -25,7 +25,7 @@ public:
 	ChunkMap getChunks();
 	Chunk getChunk(int x, int z);
 
-	bool makeMesh(int x, int z, Camera player);
+	bool makeMesh(int x, int z, Camera &player);
 
 	void clear();
 

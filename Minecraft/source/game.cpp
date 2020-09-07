@@ -6,10 +6,12 @@
 #include "resource_manager.h"
 #include "renderer.h"
 #include "cube.h"
+#include "world/world.h"
 
-Renderer* cubeRenderer;
+Renderer* masterRenderer;
 Camera* Player;
 Cube* myCube;
+World* world;
 
 Game::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), KeysProcessed(), Width(width), Height(height)
@@ -30,9 +32,12 @@ void Game::Init() {
 
     Shader objectShader = ResourceManager::GetShader("object");
 
-    cubeRenderer = new Renderer(objectShader);
+    masterRenderer = new Renderer(objectShader);
 
     myCube = new Cube(glm::vec3(0.0f, 0.0f, 0.0f), ResourceManager::GetTexture("squareBrick"));
+
+    world = new World();
+    world->setSpawn(*Player);
 }
 
 void Game::ProcessKeys(float deltaTime)
@@ -66,7 +71,7 @@ void Game::ProcessMouseMovement(float xoffset, float yoffset)
 }
 
 void Game::Update(float dt) {
-
+    world->loadSurroundingChunks(*Player);
 }
 
 void Game::DoCollisions() {
@@ -77,8 +82,7 @@ void Game::Render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glm::mat4 view = Player->GetViewMatrix();
-    myCube->Draw(*cubeRenderer, view);
+    world->render(*masterRenderer, *Player);
 }
 
 void Game::ResetPlayer() {
