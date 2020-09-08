@@ -1,4 +1,5 @@
 #ifndef MESH_H
+#define MESH_H
 
 #include <glm/glm.hpp>
 #include <glad/glad.h>

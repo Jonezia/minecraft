@@ -13,16 +13,18 @@ namespace {
 }
 
 ChunkMeshBuilder::ChunkMeshBuilder(Chunk& chunk, Mesh& mesh) :
-	chunk(&chunk), mesh(&mesh) {}
+	m_chunk(&chunk), m_mesh(&mesh) {}
 
 void ChunkMeshBuilder::buildMesh()
 {
 	// replace with actual texCoords
 	std::array<float, 8> defaultTexCoords = { 0, 0, 0, 1, 1, 1, 1, 0 };
-	for (std::pair<glm::vec3, Block> element : this->chunk->getBlocks) {
-		glm::vec3 position = element.first;
-		Block block = element.second;
+	auto& blocks = m_chunk->getBlocks();
+	for (auto itr = blocks.begin(); itr != blocks.end();) {
+		glm::vec3 position = itr->first;
+		Block block = itr->second;
 		tryAddFaceToMesh(topFace, defaultTexCoords, position);
+		itr++;
 	}
 }
 
@@ -34,5 +36,5 @@ void ChunkMeshBuilder::tryAddFaceToMesh(const std::array<float, 12>& blockFace, 
 		faceVertices[i] = Vertex(glm::vec3(blockFace[i], blockFace[i + 1], blockFace[i + 2]),
 			glm::vec2(texCoords[i], texCoords[i + 1]));
 	}
-	mesh->addFace(faceVertices, chunk->getPosition, blockPosition);
+	m_mesh->addFace(faceVertices, m_chunk->getPosition(), blockPosition);
 }

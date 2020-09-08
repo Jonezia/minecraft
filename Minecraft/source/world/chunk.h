@@ -18,6 +18,7 @@ using ChunkData = std::unordered_map<glm::vec3, Block>;
 class Chunk
 {
 public:
+	Chunk() = default;
 	Chunk(World &world, VectorXZ pos);
 
 	void load();
@@ -27,10 +28,10 @@ public:
 
 	bool blockExistsAt(int x, int y, int z);
 
-	ChunkData getBlocks();
-	Block getBlock(int x, int y, int z);
+	ChunkData &getBlocks();
+	int getBlockId(int x, int y, int z);
 
-	glm::vec3 getPosition();
+	glm::vec3 &getPosition();
 
 	bool makeMesh(Camera &player);
 
@@ -39,7 +40,7 @@ public:
 	bool loaded;
 	bool hasMesh;
 private:
-	VectorXZ position;
+	glm::vec3 position;
 	World* world;
 	ChunkData blocks;
 	Mesh mesh;

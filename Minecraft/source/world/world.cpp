@@ -29,9 +29,9 @@ void World::loadSurroundingChunks(Camera player)
         return;
     }
 
-    auto& chunkMap = chunk_manager.getChunks;
+    auto& chunkMap = chunk_manager.getChunks();
     for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
-        Chunk& chunk = itr->second;
+        Chunk &chunk = itr->second;
 
         int minX = currentChunkX - LOAD_DISTANCE;
         int minZ = currentChunkZ - LOAD_DISTANCE;
@@ -61,9 +61,9 @@ void World::loadSurroundingChunks(Camera player)
 
 void World::render(Renderer renderer, Camera player)
 {
-	auto& chunkMap = chunk_manager.getChunks;
+	auto& chunkMap = chunk_manager.getChunks();
     for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
-        Chunk& chunk = itr->second;
+        Chunk &chunk = itr->second;
 
         int cameraX = player.Position.x;
         int cameraZ = player.Position.z;
@@ -84,4 +84,5 @@ void World::render(Renderer renderer, Camera player)
             chunk.drawChunk(renderer, player);
             itr++;
         }
+    }
 }

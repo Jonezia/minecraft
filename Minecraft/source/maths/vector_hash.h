@@ -9,8 +9,7 @@ struct VectorXZ {
         x(x), z(z) {};
 };
 
-bool isequal(const VectorXZ& left, const VectorXZ& right) noexcept;
-bool isequal(const glm::vec3& left, const glm::vec3& right) noexcept;
+bool operator==(const VectorXZ& left, const VectorXZ& right) noexcept;
 
 namespace std {
     template <> struct hash<VectorXZ> {

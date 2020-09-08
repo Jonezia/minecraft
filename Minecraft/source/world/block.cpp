@@ -1,8 +1,10 @@
 #include "block.h"
 
-Block::Block(int id) : id(id) {}
+Block::Block() : m_id(0) {}
+
+Block::Block(int id) : m_id(id) {}
 
 int Block::getId()
 {
-	return this->id;
+	return m_id;
 }

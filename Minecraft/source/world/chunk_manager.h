@@ -22,8 +22,8 @@ public:
 	bool chunkExistsAt(int x, int z);
 	bool chunkLoaded(int x, int z);
 
-	ChunkMap getChunks();
-	Chunk getChunk(int x, int z);
+	ChunkMap &getChunks();
+	Chunk &getChunk(int x, int z);
 
 	bool makeMesh(int x, int z, Camera &player);
 

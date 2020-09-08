@@ -29,12 +29,12 @@ bool ChunkManager::chunkLoaded(int x, int z)
 	return this->chunks[VectorXZ {x, z}].loaded;
 }
 
-ChunkMap ChunkManager::getChunks()
+ChunkMap &ChunkManager::getChunks()
 {
-	return this->chunks;
+	return chunks;
 }
 
-Chunk ChunkManager::getChunk(int x, int z)
+Chunk &ChunkManager::getChunk(int x, int z)
 {
 	VectorXZ key{ x,z };
 	if (!chunkExistsAt(x, z)) {
@@ -46,7 +46,7 @@ Chunk ChunkManager::getChunk(int x, int z)
 
 bool ChunkManager::makeMesh(int x, int z, Camera &player)
 {
-	getChunk(x, z).makeMesh(player);
+	return getChunk(x, z).makeMesh(player);
 }
 
 void ChunkManager::clear()

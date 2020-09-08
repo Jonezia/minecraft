@@ -12,10 +12,11 @@
 class Block
 {
 public:
+	Block();
 	Block(int id);
 	int getId();
 private:
-	int id;
+	int m_id;
 };
 
 #endif
