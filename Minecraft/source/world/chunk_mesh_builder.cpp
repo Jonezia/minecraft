@@ -26,15 +26,20 @@ void ChunkMeshBuilder::buildMesh()
 		tryAddFaceToMesh(topFace, defaultTexCoords, position);
 		itr++;
 	}
+	m_mesh->bufferMesh();
 }
 
 void ChunkMeshBuilder::tryAddFaceToMesh(const std::array<float, 12>& blockFace, const std::array<float, 8>& texCoords,
 	const glm::vec3& blockPosition)
 {
 	std::array<Vertex, 4> faceVertices;
-	for (int i = 0; i < 4; i++) {
-		faceVertices[i] = Vertex(glm::vec3(blockFace[i], blockFace[i + 1], blockFace[i + 2]),
-			glm::vec2(texCoords[i], texCoords[i + 1]));
-	}
+	//for (unsigned int i = 0; i < 4; i++) {
+	//	faceVertices[i] = Vertex(glm::vec3(blockFace[3*i], blockFace[3*i + 1], blockFace[3*i + 2]),
+	//		glm::vec2(texCoords[2*i], texCoords[2*i + 1]));
+	//}
+	faceVertices[0] = Vertex(glm::vec3(0, 1, 1), glm::vec2(0, 0));
+	faceVertices[1] = Vertex(glm::vec3(1, 1, 1), glm::vec2(0, 1));
+	faceVertices[2] = Vertex(glm::vec3(1, 1, 0), glm::vec2(1, 1));
+	faceVertices[3] = Vertex(glm::vec3(0, 1, 0), glm::vec2(1, 0));
 	m_mesh->addFace(faceVertices, m_chunk->getPosition(), blockPosition);
 }

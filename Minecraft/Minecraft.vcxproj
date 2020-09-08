@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
-    <ClCompile Include="source\cube.cpp" />
     <ClCompile Include="source\game.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\maths\vector_hash.cpp" />
@@ -38,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\camera.h" />
-    <ClInclude Include="source\cube.h" />
     <ClInclude Include="source\game.h" />
     <ClInclude Include="source\maths\vector_hash.h" />
     <ClInclude Include="source\renderer.h" />

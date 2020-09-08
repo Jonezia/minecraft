@@ -5,12 +5,10 @@
 #include "camera.h"
 #include "resource_manager.h"
 #include "renderer.h"
-#include "cube.h"
 #include "world/world.h"
 
 Renderer* masterRenderer;
 Camera* Player;
-Cube* myCube;
 World* world;
 
 Game::Game(unsigned int width, unsigned int height)
@@ -22,7 +20,7 @@ Game::~Game() {
 }
 
 void Game::Init() {
-    Player = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
+    Player = new Camera(glm::vec3(0.0f, 0.0f, 0.0f));
 
     // build shaders
     ResourceManager::LoadShader("source/shaders/objectVS.glsl", "source/shaders/objectFS.glsl", nullptr, "object");
@@ -34,7 +32,7 @@ void Game::Init() {
 
     masterRenderer = new Renderer(objectShader);
 
-    myCube = new Cube(glm::vec3(0.0f, 0.0f, 0.0f), ResourceManager::GetTexture("squareBrick"));
+    // masterRenderer->initCubeRenderData();
 
     world = new World();
     world->setSpawn(*Player);
@@ -71,7 +69,7 @@ void Game::ProcessMouseMovement(float xoffset, float yoffset)
 }
 
 void Game::Update(float dt) {
-    world->loadSurroundingChunks(*Player);
+    // world->loadSurroundingChunks(*Player);
 }
 
 void Game::DoCollisions() {
@@ -82,6 +80,7 @@ void Game::Render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    // masterRenderer->DrawCube(glm::vec3(0.0, 0.0, 0.0), Player->GetViewMatrix());
     world->render(*masterRenderer, *Player);
 }
 

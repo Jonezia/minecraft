@@ -48,9 +48,6 @@
     <ClCompile Include="source\renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\world\mesh.cpp">
       <Filter>Source Files\world</Filter>
     </ClCompile>
@@ -90,9 +87,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="source\renderer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\cube.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="source\world\mesh.h">

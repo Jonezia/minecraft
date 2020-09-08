@@ -14,7 +14,7 @@ Renderer::~Renderer()
     glDeleteVertexArrays(1, &this->cubeVAO);
 }
 
-void Renderer::DrawCube(Texture2D& texture, glm::vec3 position, glm::mat4 viewMatrix, glm::vec3 color)
+void Renderer::DrawCube(glm::vec3 position, glm::mat4 viewMatrix)
 {
     // prepare transformations
     this->shader.Use();
@@ -30,10 +30,10 @@ void Renderer::DrawCube(Texture2D& texture, glm::vec3 position, glm::mat4 viewMa
     this->shader.SetMatrix4("view",viewMatrix);
 
     // render textured cube
-    this->shader.SetVector3f("color", color);
+    this->shader.SetVector3f("color", glm::vec3(1.0, 1.0, 1.0));
 
     glActiveTexture(GL_TEXTURE0);
-    texture.Bind();
+    ResourceManager::GetTexture("squareBrick").Bind();
 
     glBindVertexArray(this->cubeVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -125,5 +125,4 @@ void Renderer::drawChunk(const Mesh& mesh, glm::mat4 viewMatrix)
 
     glBindVertexArray(mesh.VAO);
     glDrawElements(GL_TRIANGLES, mesh.vertices.size(), GL_UNSIGNED_INT, 0);
-    glBindVertexArray(0);
 }

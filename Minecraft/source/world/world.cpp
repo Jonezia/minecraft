@@ -6,8 +6,13 @@ World::World() : chunk_manager(*this) {}
 
 glm::vec3 World::setSpawn(Camera player)
 {
-    glm::vec3 spawnPos = { 1,1,1 };
+    // temp
+    chunk_manager.loadChunk(0, 0);
+    chunk_manager.makeMesh(0, 0, player);
+
+    glm::vec3 spawnPos = { 0,0,0 };
     player.setPosition(spawnPos);
+    updateCurrentChunk(player);
     return spawnPos;
 }
 
