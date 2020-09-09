@@ -34,5 +34,5 @@ void Renderer::drawChunk(const Mesh& mesh, glm::mat4 viewMatrix)
     ResourceManager::GetTexture("squareBrick").Bind();
 
     glBindVertexArray(mesh.VAO);
-    glDrawElements(GL_TRIANGLES, mesh.vertices.size(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
 }

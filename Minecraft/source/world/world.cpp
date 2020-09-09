@@ -6,13 +6,13 @@ World::World() : chunk_manager(*this) {}
 
 glm::vec3 World::setSpawn(Camera player)
 {
-    // temp
+    // todo
     chunk_manager.loadChunk(0, 0);
     chunk_manager.makeMesh(0, 0, player);
-    chunk_manager.loadChunk(0, 1);
-    chunk_manager.makeMesh(0, 1, player);
-    chunk_manager.loadChunk(1, 0);
-    chunk_manager.makeMesh(1, 0, player);
+    //chunk_manager.loadChunk(0, 1);
+    //chunk_manager.makeMesh(0, 1, player);
+    //chunk_manager.loadChunk(1, 0);
+    //chunk_manager.makeMesh(1, 0, player);
 
     glm::vec3 spawnPos = { 0,0,0 };
     player.setPosition(spawnPos);
@@ -71,16 +71,17 @@ void World::loadSurroundingChunks(Camera player)
 void World::render(Renderer renderer, Camera player)
 {
 	auto& chunkMap = chunk_manager.getChunks();
+
+    int cameraX = player.Position.x;
+    int cameraZ = player.Position.z;
+
+    int minX = (cameraX / CHUNK_SIZE) - RENDER_DISTANCE;
+    int minZ = (cameraZ / CHUNK_SIZE) - RENDER_DISTANCE;
+    int maxX = (cameraX / CHUNK_SIZE) + RENDER_DISTANCE;
+    int maxZ = (cameraZ / CHUNK_SIZE) + RENDER_DISTANCE;
+
     for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
         Chunk &chunk = itr->second;
-
-        int cameraX = player.Position.x;
-        int cameraZ = player.Position.z;
-
-        int minX = (cameraX / CHUNK_SIZE) - RENDER_DISTANCE;
-        int minZ = (cameraZ / CHUNK_SIZE) - RENDER_DISTANCE;
-        int maxX = (cameraX / CHUNK_SIZE) + RENDER_DISTANCE;
-        int maxZ = (cameraZ / CHUNK_SIZE) + RENDER_DISTANCE;
 
         auto location = chunk.getPosition();
 

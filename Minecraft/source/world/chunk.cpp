@@ -22,6 +22,7 @@ void Chunk::load()
 		}
 		// end Temp
 	}
+	loaded = true;
 }
 
 bool Chunk::chunkOnFile()
@@ -31,7 +32,9 @@ bool Chunk::chunkOnFile()
 
 void Chunk::saveToFile()
 {
-
+	blocks.clear();
+	loaded = false;
+	// todo: save to file
 }
 
 bool Chunk::blockExistsAt(int x, int y, int z)
@@ -67,6 +70,7 @@ bool Chunk::makeMesh(Camera &player)
 	else {
 		// check if in camera frustrum
 		ChunkMeshBuilder(*this, mesh).buildMesh();
+		hasMesh = true;
 		return true;
 	}
 }

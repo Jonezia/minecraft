@@ -20,8 +20,8 @@ public:
 	void bufferMesh();
 	unsigned int VAO;
 	std::vector<Vertex> vertices;
-private:
 	std::vector<int> indices;
+private:
 	int index;
 	unsigned int VBO, EBO;
 };
