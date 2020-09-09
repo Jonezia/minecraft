@@ -17,14 +17,10 @@ public:
     // Destructor
     ~Renderer();
     // Renders a defined quad textured with given sprite
-    void DrawCube(glm::vec3 position, glm::mat4 viewMatrix);
     void drawChunk(const Mesh& mesh, glm::mat4 viewMatrix);
-    // Initializes and configures the cube's buffer and vertex attributes
-    void initCubeRenderData();
 private:
     // Render state
     Shader       shader;
-    unsigned int cubeVAO;
 };
 
 #endif

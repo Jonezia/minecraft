@@ -17,7 +17,7 @@ void Chunk::load()
 		for (int x = 0; x < CHUNK_SIZE; x++) {
 			for (int z = 0; z < CHUNK_SIZE; z++) {
 				Block block(1);
-				blocks.emplace(glm::vec3(x,z,0), std::move(block));
+				blocks.emplace(glm::vec3(x,0,z), std::move(block));
 			}
 		}
 		// end Temp

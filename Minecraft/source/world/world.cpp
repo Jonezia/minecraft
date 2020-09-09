@@ -9,6 +9,10 @@ glm::vec3 World::setSpawn(Camera player)
     // temp
     chunk_manager.loadChunk(0, 0);
     chunk_manager.makeMesh(0, 0, player);
+    chunk_manager.loadChunk(0, 1);
+    chunk_manager.makeMesh(0, 1, player);
+    chunk_manager.loadChunk(1, 0);
+    chunk_manager.makeMesh(1, 0, player);
 
     glm::vec3 spawnPos = { 0,0,0 };
     player.setPosition(spawnPos);

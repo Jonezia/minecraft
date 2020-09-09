@@ -20,7 +20,7 @@ Game::~Game() {
 }
 
 void Game::Init() {
-    Player = new Camera(glm::vec3(0.0f, 0.0f, 0.0f));
+    Player = new Camera(glm::vec3(5.0f, 2.0f, 5.0f));
 
     // build shaders
     ResourceManager::LoadShader("source/shaders/objectVS.glsl", "source/shaders/objectFS.glsl", nullptr, "object");
@@ -31,8 +31,6 @@ void Game::Init() {
     Shader objectShader = ResourceManager::GetShader("object");
 
     masterRenderer = new Renderer(objectShader);
-
-    // masterRenderer->initCubeRenderData();
 
     world = new World();
     world->setSpawn(*Player);
@@ -80,7 +78,6 @@ void Game::Render() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // masterRenderer->DrawCube(glm::vec3(0.0, 0.0, 0.0), Player->GetViewMatrix());
     world->render(*masterRenderer, *Player);
 }
 

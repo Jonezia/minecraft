@@ -24,6 +24,8 @@ void ChunkMeshBuilder::buildMesh()
 		glm::vec3 position = itr->first;
 		Block block = itr->second;
 		tryAddFaceToMesh(topFace, defaultTexCoords, position);
+		tryAddFaceToMesh(bottomFace, defaultTexCoords, position);
+		tryAddFaceToMesh(frontFace, defaultTexCoords, position);
 		itr++;
 	}
 	m_mesh->bufferMesh();
