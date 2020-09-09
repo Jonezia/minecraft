@@ -22,7 +22,6 @@ public:
 	Chunk(World &world, VectorXZ pos);
 
 	void load();
-	void unload();
 	
 	bool chunkOnFile();
 	void saveToFile();

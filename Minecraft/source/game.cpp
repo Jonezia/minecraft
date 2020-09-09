@@ -26,7 +26,7 @@ void Game::Init() {
     ResourceManager::LoadShader("source/shaders/objectVS.glsl", "source/shaders/objectFS.glsl", nullptr, "object");
 
     // load textures
-    ResourceManager::LoadTexture("source/textures/squarebrick.jpg", false, "squareBrick");
+    ResourceManager::LoadTexture("source/textures/default-texture-pack.png", false, "textureAtlas");
 
     Shader objectShader = ResourceManager::GetShader("object");
 
@@ -67,7 +67,7 @@ void Game::ProcessMouseMovement(float xoffset, float yoffset)
 }
 
 void Game::Update(float dt) {
-    // world->loadSurroundingChunks(*Player);
+    world->loadSurroundingChunks(*Player);
 }
 
 void Game::DoCollisions() {
