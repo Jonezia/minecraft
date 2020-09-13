@@ -5,6 +5,7 @@
 #include "chunk.h"
 #include "../renderer.h"
 #include "../camera.h"
+#include "texture_atlas.h"
 
 class World
 {
@@ -16,6 +17,7 @@ public:
 	void render(Renderer renderer, Camera player);
 private:
 	ChunkManager chunk_manager;
+	TextureAtlas texture_atlas;
 	int currentChunkX;
 	int currentChunkZ;
 };

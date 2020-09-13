@@ -2,7 +2,8 @@
 
 #include "world_constants.h"
 
-World::World() : chunk_manager(*this) {}
+World::World() : chunk_manager(*this), 
+    texture_atlas() {}
 
 glm::vec3 World::setSpawn(Camera player)
 {

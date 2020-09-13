@@ -32,6 +32,7 @@
     <ClCompile Include="source\world\chunk_manager.cpp" />
     <ClCompile Include="source\world\chunk_mesh_builder.cpp" />
     <ClCompile Include="source\world\mesh.cpp" />
+    <ClCompile Include="source\world\texture_atlas.cpp" />
     <ClCompile Include="source\world\world.cpp" />
     <ClCompile Include="stb_image.cpp" />
   </ItemGroup>
@@ -49,6 +50,7 @@
     <ClInclude Include="source\world\chunk_manager.h" />
     <ClInclude Include="source\world\chunk_mesh_builder.h" />
     <ClInclude Include="source\world\mesh.h" />
+    <ClInclude Include="source\world\texture_atlas.h" />
     <ClInclude Include="source\world\vertex.h" />
     <ClInclude Include="source\world\world.h" />
     <ClInclude Include="source\world\world_constants.h" />

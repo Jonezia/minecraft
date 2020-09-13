@@ -69,6 +69,9 @@
     <ClCompile Include="source\world\chunk_mesh_builder.cpp">
       <Filter>Source Files\world</Filter>
     </ClCompile>
+    <ClCompile Include="source\world\texture_atlas.cpp">
+      <Filter>Source Files\world</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\shader.h">
@@ -117,6 +120,9 @@
       <Filter>Source Files\world</Filter>
     </ClInclude>
     <ClInclude Include="source\world\block_id.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
+    <ClInclude Include="source\world\texture_atlas.h">
       <Filter>Source Files\world</Filter>
     </ClInclude>
   </ItemGroup>
