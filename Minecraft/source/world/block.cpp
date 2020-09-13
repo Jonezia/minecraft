@@ -1,10 +1,10 @@
 #include "block.h"
 
-Block::Block() : m_id(0) {}
+Block::Block() : m_id(BlockID::Air) {}
 
-Block::Block(int id) : m_id(id) {}
+Block::Block(BlockID id) : m_id(id) {}
 
-int Block::getId()
+BlockID Block::getId()
 {
 	return m_id;
 }

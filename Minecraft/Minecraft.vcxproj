@@ -44,6 +44,7 @@
     <ClInclude Include="source\shader.h" />
     <ClInclude Include="source\texture.h" />
     <ClInclude Include="source\world\block.h" />
+    <ClInclude Include="source\world\block_id.h" />
     <ClInclude Include="source\world\chunk.h" />
     <ClInclude Include="source\world\chunk_manager.h" />
     <ClInclude Include="source\world\chunk_mesh_builder.h" />

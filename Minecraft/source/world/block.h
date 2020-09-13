@@ -1,6 +1,8 @@
 #ifndef BLOCK_H
 #define BLOCK_H
 
+#include "block_id.h"
+
 //      2--------3
 //     /|       /|
 //    1--------4 |
@@ -13,10 +15,10 @@ class Block
 {
 public:
 	Block();
-	Block(int id);
-	int getId();
+	Block(BlockID id);
+	BlockID getId();
 private:
-	int m_id;
+	BlockID m_id;
 };
 
 #endif

@@ -10,6 +10,7 @@
 #include "../camera.h"
 #include "../renderer.h"
 #include "mesh.h"
+#include "block_id.h"
 
 class World;
 
@@ -29,7 +30,7 @@ public:
 	bool blockExistsAt(int x, int y, int z);
 
 	ChunkData &getBlocks();
-	int getBlockId(int x, int y, int z);
+	BlockID getBlockId(int x, int y, int z);
 
 	glm::vec3 &getPosition();
 

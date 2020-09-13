@@ -31,7 +31,7 @@ void Renderer::drawChunk(const Mesh& mesh, glm::mat4 viewMatrix)
 
     glActiveTexture(GL_TEXTURE0);
     // Replace with proper texture
-    ResourceManager::GetTexture("squareBrick").Bind();
+    ResourceManager::GetTexture("textureAtlas").Bind();
 
     glBindVertexArray(mesh.VAO);
     glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);

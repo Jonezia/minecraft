@@ -16,7 +16,7 @@ void Chunk::load()
 		// Temp: replace with generator class
 		for (int x = 0; x < CHUNK_SIZE; x++) {
 			for (int z = 0; z < CHUNK_SIZE; z++) {
-				Block block(1);
+				Block block(BlockID::Grass);
 				blocks.emplace(glm::vec3(x,0,z), std::move(block));
 			}
 		}
@@ -47,10 +47,10 @@ ChunkData &Chunk::getBlocks()
 	return this->blocks;
 }
 
-int Chunk::getBlockId(int x, int y, int z)
+BlockID Chunk::getBlockId(int x, int y, int z)
 {
 	if (!blockExistsAt(x, y, z)) {
-		return 0;
+		return BlockID::Air;
 	}
 	else {
 		return this->blocks[glm::vec3(x, y, z)].getId();

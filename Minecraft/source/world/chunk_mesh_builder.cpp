@@ -26,6 +26,7 @@ void ChunkMeshBuilder::buildMesh()
 	for (auto itr = blocks.begin(); itr != blocks.end();) {
 		glm::vec3 position = itr->first;
 		Block block = itr->second;
+
 		for (auto face : faces) {
 			tryAddFaceToMesh(face, defaultTexCoords, position);
 		}

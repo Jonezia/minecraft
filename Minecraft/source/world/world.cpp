@@ -50,7 +50,9 @@ void World::loadSurroundingChunks(Camera player)
 
         if (minX > location.x || minZ > location.y || maxZ < location.y ||
             maxX < location.x) {
+            chunk.saveToFile();
             itr = chunkMap.erase(itr);
+            continue;
         }
 
         itr++;

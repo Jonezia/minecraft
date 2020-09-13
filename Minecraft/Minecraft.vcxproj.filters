@@ -116,6 +116,9 @@
     <ClInclude Include="source\world\chunk_mesh_builder.h">
       <Filter>Source Files\world</Filter>
     </ClInclude>
+    <ClInclude Include="source\world\block_id.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\objectFS.glsl">
