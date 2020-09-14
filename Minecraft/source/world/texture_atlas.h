@@ -6,17 +6,17 @@
 #include <array>
 #include <unordered_map>
 
-// (0,1)     (1,1)
-// ^(V)  
+// (0,0)     (1,0)
+// ------------->(U) 
 // |    
 // |  UV diagram
 // |     
-// -------------> (U)
-// (0, 0)    (1,0)
+// V (V)        -
+// (0,1)     (1,1)
 
 using UVCoords = std::array<float, 8>;
-// number of texture units per row/column of overall texture
-constexpr int texSize = 16;
+// fractional width of one texture tile
+constexpr float texSize = 1.f/16;
 
 struct TexUVCoords;
 
@@ -34,7 +34,7 @@ struct TexUVCoords {
 	UVCoords sideTexCoords;
 	UVCoords bottomTexCoords;
 	
-	// row and col starting with 0,0 in bottom left corner
+	// row and col starting with 0,0 in top left corner
 	UVCoords getTexCorners(int row, int col);
 
 	TexUVCoords();
