@@ -18,10 +18,9 @@ ChunkMeshBuilder::ChunkMeshBuilder(Chunk& chunk, Mesh& mesh) :
 
 void ChunkMeshBuilder::buildMesh()
 {
-	// todo: replace with actual texCoords
-	std::array<float, 8> defaultTexCoords = { 0, 0, 0, 1, 1, 1, 1, 0 };
 	auto& blocks = m_chunk->getBlocks();
 	for (auto itr = blocks.begin(); itr != blocks.end();) {
+
 		glm::vec3 position = itr->first;
 		Block block = itr->second;
 		TexUVCoords UVCoords = TextureAtlas::getTextures(block.getId());

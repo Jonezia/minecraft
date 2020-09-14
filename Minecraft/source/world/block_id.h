@@ -3,7 +3,8 @@
 
 enum class BlockID {
 	Air = 0,
-	Grass = 1,
+	Dirt = 1,
+	Grass = 2,
 
 	NUM_TYPES
 };

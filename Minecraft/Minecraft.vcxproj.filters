@@ -125,6 +125,9 @@
     <ClInclude Include="source\world\texture_atlas.h">
       <Filter>Source Files\world</Filter>
     </ClInclude>
+    <ClInclude Include="source\world\texture_tiles.h">
+      <Filter>Source Files\world</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\objectFS.glsl">

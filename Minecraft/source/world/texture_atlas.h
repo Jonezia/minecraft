@@ -2,6 +2,7 @@
 #define TEXTURE_ATLAS_H
 
 #include "block_id.h"
+#include "texture_tiles.h"
 
 #include <array>
 #include <unordered_map>
@@ -15,8 +16,11 @@
 // (0,1)     (1,1)
 
 using UVCoords = std::array<float, 8>;
+
+// number of tiles per row/col
+constexpr int texPerRow = 16;
 // fractional width of one texture tile
-constexpr float texSize = 1.f/16;
+constexpr float texSize = 1.f/texPerRow;
 
 struct TexUVCoords;
 
@@ -35,12 +39,12 @@ struct TexUVCoords {
 	UVCoords bottomTexCoords;
 	
 	// row and col starting with 0,0 in top left corner
-	UVCoords getTexCorners(int row, int col);
+	UVCoords getTexCorners(int pos);
 
 	TexUVCoords();
-	TexUVCoords(int topU, int topV, int sideU, int sideV, int botU, int botV);
+	TexUVCoords(TexTile topTile, TexTile sideTile, TexTile botTile);
 	// initialiser if all textures are the same
-	TexUVCoords(int allU, int allV);
+	TexUVCoords(TexTile allTile);
 };
 
 #endif

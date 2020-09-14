@@ -2,8 +2,12 @@
 
 std::unordered_map<BlockID, TexUVCoords> TextureAtlas::texturesMap;
 
+typedef TexTile T;
+
 TextureAtlas::TextureAtlas() {
-	addTextures(BlockID::Grass, TexUVCoords(2, 9, 3, 0, 2, 0));
+	// C++20 will introduce "using" keyword for scoped enums
+	addTextures(BlockID::Grass, TexUVCoords(T::grassTop, T::dirtSide, T::dirtBottom));
+	addTextures(BlockID::Dirt, TexUVCoords(T::dirtBottom));
 }
 
 void TextureAtlas::addTextures(BlockID id, TexUVCoords coords) {
@@ -15,27 +19,37 @@ TexUVCoords TextureAtlas::getTextures(BlockID id) {
 }
 
 TexUVCoords::TexUVCoords() {
-	topTexCoords = getTexCorners(0, 0);
-	sideTexCoords = getTexCorners(0, 0);
-	bottomTexCoords = getTexCorners(0,0);
+	topTexCoords = getTexCorners(0);
+	sideTexCoords = getTexCorners(0);
+	bottomTexCoords = getTexCorners(0);
 }
 
-TexUVCoords::TexUVCoords(int topU, int topV, int sideU, int sideV, int botU, int botV) {
-	topTexCoords = getTexCorners(topU, topV);
-	sideTexCoords = getTexCorners(sideU, sideV);
-	bottomTexCoords = getTexCorners(botU, botV);
+TexUVCoords::TexUVCoords(TexTile topTile, TexTile sideTile, TexTile botTile) {
+	int topPos = static_cast<int>(topTile);
+	int sidePos = static_cast<int>(sideTile);
+	int botPos = static_cast<int>(botTile);
+	topTexCoords = getTexCorners(topPos);
+	sideTexCoords = getTexCorners(sidePos);
+	bottomTexCoords = getTexCorners(botPos);
 }
 
-TexUVCoords::TexUVCoords(int allU, int allV) {
-	topTexCoords = getTexCorners(allU, allV);
-	sideTexCoords = getTexCorners(allU, allV);
-	bottomTexCoords = getTexCorners(allU, allV);
+TexUVCoords::TexUVCoords(TexTile allTile) {
+	int allPos = static_cast<int>(allTile);
+	topTexCoords = getTexCorners(allPos);
+	sideTexCoords = getTexCorners(allPos);
+	bottomTexCoords = getTexCorners(allPos);
 }
 
-UVCoords TexUVCoords::getTexCorners(int row, int col) {
-	// UV positions of top left coord of texture square
-	float u = row * texSize;
-	float v = col * texSize;
+UVCoords TexUVCoords::getTexCorners(int pos) {
+	// pos = position of tile when arranged with the
+	// first in top left, row by row to bottom right
+
+	// positions of top left coord of texture square
+	int col = pos % texPerRow;
+	int row = pos / texPerRow;
+
+	float u = col * texSize;
+	float v = row * texSize;
 
 	// Order of coordinate specification:
 	// 4--------3

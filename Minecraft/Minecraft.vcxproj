@@ -51,6 +51,7 @@
     <ClInclude Include="source\world\chunk_mesh_builder.h" />
     <ClInclude Include="source\world\mesh.h" />
     <ClInclude Include="source\world\texture_atlas.h" />
+    <ClInclude Include="source\world\texture_tiles.h" />
     <ClInclude Include="source\world\vertex.h" />
     <ClInclude Include="source\world\world.h" />
     <ClInclude Include="source\world\world_constants.h" />
