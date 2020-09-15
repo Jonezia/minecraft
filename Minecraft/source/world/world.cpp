@@ -20,6 +20,11 @@ glm::vec3 World::setSpawn(Camera player)
     return spawnPos;
 }
 
+std::pair<int,int> World::getCurrentChunk() {
+    std::pair<int, int> XZPos(currentChunkX, currentChunkZ);
+    return XZPos;
+}
+
 bool World::updateCurrentChunk(Camera player)
 {
     int chunkX = player.Position.x / CHUNK_SIZE;

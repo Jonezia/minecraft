@@ -60,9 +60,6 @@
     <ClCompile Include="source\world\chunk_manager.cpp">
       <Filter>Source Files\world</Filter>
     </ClCompile>
-    <ClCompile Include="source\maths\vector_hash.cpp">
-      <Filter>Source Files\maths</Filter>
-    </ClCompile>
     <ClCompile Include="source\world\block.cpp">
       <Filter>Source Files\world</Filter>
     </ClCompile>
@@ -71,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="source\world\texture_atlas.cpp">
       <Filter>Source Files\world</Filter>
+    </ClCompile>
+    <ClCompile Include="source\text_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\maths\vector_hash.cpp">
+      <Filter>Source Files\maths</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,12 +131,21 @@
     <ClInclude Include="source\world\texture_tiles.h">
       <Filter>Source Files\world</Filter>
     </ClInclude>
+    <ClInclude Include="source\text_renderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="source\shaders\objectFS.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
     <None Include="source\shaders\objectVS.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="source\shaders\text_2dFS.glsl">
+      <Filter>Source Files\shaders</Filter>
+    </None>
+    <None Include="source\shaders\text_2dVS.glsl">
       <Filter>Source Files\shaders</Filter>
     </None>
   </ItemGroup>

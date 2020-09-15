@@ -58,6 +58,9 @@ int main()
 
     // configure global opengl state
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // game init
     Minecraft.Init();
@@ -65,8 +68,6 @@ int main()
     // timing
     float deltaTime = 0.0f;	// time between current frame and last frame
     float lastFrame = 0.0f;
-
-    glEnable(GL_CULL_FACE);
 
     // render loop
     // -----------
@@ -84,7 +85,7 @@ int main()
 
         Minecraft.Update(deltaTime);
 
-        Minecraft.Render();
+        Minecraft.Render(deltaTime);
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         glfwSwapBuffers(window);

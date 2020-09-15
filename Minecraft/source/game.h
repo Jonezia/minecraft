@@ -28,7 +28,7 @@ public:
 	void ProcessMouseMovement(float xoffset, float yoffset);
 	void Update(float dt);
 	void DoCollisions();
-	void Render();
+	void Render(float dt);
 	// Reset
 	void ResetPlayer();
 	void ResetLevel();

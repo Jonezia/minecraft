@@ -35,4 +35,5 @@ void Renderer::drawChunk(const Mesh& mesh, glm::mat4 viewMatrix)
 
     glBindVertexArray(mesh.VAO);
     glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }

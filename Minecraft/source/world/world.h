@@ -12,6 +12,7 @@ class World
 public:
 	World();
 	glm::vec3 setSpawn(Camera player);
+	std::pair<int,int> getCurrentChunk();
 	bool updateCurrentChunk(Camera player);
 	void loadSurroundingChunks(Camera player);
 	void render(Renderer renderer, Camera player);

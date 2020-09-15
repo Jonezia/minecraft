@@ -6,17 +6,22 @@
 #include "resource_manager.h"
 #include "renderer.h"
 #include "world/world.h"
+#include "text_renderer.h"
 
 Renderer* masterRenderer;
 Camera* Player;
 World* world;
+TextRenderer* Text;
 
 Game::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), KeysProcessed(), Width(width), Height(height)
 {}
 
 Game::~Game() {
+    delete masterRenderer;
     delete Player;
+    delete world;
+    delete Text;
 }
 
 void Game::Init() {
@@ -29,34 +34,36 @@ void Game::Init() {
     ResourceManager::LoadTexture("source/textures/default-texture-pack.png", false, "textureAtlas");
 
     Shader objectShader = ResourceManager::GetShader("object");
-
     masterRenderer = new Renderer(objectShader);
+
+    Text = new TextRenderer(Width, Height);
+    Text->Load("source/fonts/calibri.ttf", 24);
 
     world = new World();
     world->setSpawn(*Player);
 }
 
-void Game::ProcessKeys(float deltaTime)
+void Game::ProcessKeys(float dt)
 {
     if (this->State == GAME_ACTIVE)
     {
         if (this->Keys[GLFW_KEY_W]) {
-            Player->ProcessKeyboard(FORWARD, deltaTime);
+            Player->ProcessKeyboard(FORWARD, dt);
         }
         if (this->Keys[GLFW_KEY_S]) {
-            Player->ProcessKeyboard(BACKWARD, deltaTime);
+            Player->ProcessKeyboard(BACKWARD, dt);
         }
         if (this->Keys[GLFW_KEY_A]) {
-            Player->ProcessKeyboard(LEFT, deltaTime);
+            Player->ProcessKeyboard(LEFT, dt);
         }
         if (this->Keys[GLFW_KEY_D]) {
-            Player->ProcessKeyboard(RIGHT, deltaTime);
+            Player->ProcessKeyboard(RIGHT, dt);
         }
         if (this->Keys[GLFW_KEY_SPACE]) {
-            Player->ProcessKeyboard(UP, deltaTime);
+            Player->ProcessKeyboard(UP, dt);
         }
         if (this->Keys[GLFW_KEY_C]) {
-            Player->ProcessKeyboard(DOWN, deltaTime);
+            Player->ProcessKeyboard(DOWN, dt);
         }
     }
 }
@@ -74,11 +81,19 @@ void Game::DoCollisions() {
 
 }
 
-void Game::Render() {
+void Game::Render(float dt) {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     world->render(*masterRenderer, *Player);
+
+    int fps = 1 / dt;
+    Text->RenderText(std::to_string(fps) + " fps", 5.0f, 5.0f, 1.0f);
+
+    std::pair<int, int> XZPos = world->getCurrentChunk();
+    std::string currChunk = "Current Chunk ( " + std::to_string(XZPos.first) 
+        + ", " + std::to_string(XZPos.second) + ")";
+    Text->RenderText(currChunk, 5.0f, 30.0f, 1.0f);
 }
 
 void Game::ResetPlayer() {
