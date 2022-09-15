@@ -54,7 +54,7 @@ void World::loadSurroundingChunks(Camera player)
 
         auto location = chunk.getPosition();
 
-        if (minX > location.x || minZ > location.y || maxZ < location.y ||
+        if (minX > location.x || minZ > location.z || maxZ < location.z ||
             maxX < location.x) {
             chunk.saveToFile();
             itr = chunkMap.erase(itr);
@@ -77,7 +77,7 @@ void World::loadSurroundingChunks(Camera player)
 
 void World::render(Renderer renderer, Camera player)
 {
-	auto& chunkMap = chunk_manager.getChunks();
+    auto& chunkMap = chunk_manager.getChunks();
 
     int cameraX = player.Position.x;
     int cameraZ = player.Position.z;
@@ -92,7 +92,7 @@ void World::render(Renderer renderer, Camera player)
 
         auto location = chunk.getPosition();
 
-        if (minX > location.x || minZ > location.y || maxZ < location.y ||
+        if (minX > location.x || minZ > location.z || maxZ < location.z ||
             maxX < location.x) {
             itr = chunkMap.erase(itr);
             continue;
