@@ -37,6 +37,11 @@ bool Chunk::blockExistsAt(int x, int y, int z)
 	return this->blocks.find(glm::vec3(x,y,z)) != this->blocks.end();
 }
 
+bool Chunk::blockExistsAt(glm::vec3 pos)
+{
+	return this->blocks.find(pos) != this->blocks.end();
+}
+
 ChunkData &Chunk::getBlocks()
 {
 	return this->blocks;

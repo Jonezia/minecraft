@@ -4,12 +4,34 @@
 #include "vertex.h"
 #include "texture_atlas.h"
 
+//    y
+//    |
+//    | z Front
+//    |/
+//    .--------x
+//   /
+//   Back
+
+//      (0,1,1)--------(1,1,1)
+//     /|                   /|
+//    (0,1,0)--------(1,1,0) |
+//    | |                  | |
+//    | (0,0,1)------------|-(1,0,1)
+//    |/                   |/
+//    (0,0,0)--------(1,0,0)
+
 namespace {
+	// (0,1,1), (1,1,1), (1,1,0), (0,1,0)
 	const std::array<float, 12> topFace{ 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, };
+	// (0,0,1), (1,0,1), (1,1,1), (0,1,1)
 	const std::array<float, 12> frontFace{0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,};
+	// (1,0,0), (0,0,0), (0,1,0), (1,1,0)
 	const std::array<float, 12> backFace{1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0,};
+	// (0,0,0), (0,0,1), (0,1,1), (0,1,0)
 	const std::array<float, 12> leftFace{0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0,};
+	// (1,0,1), (1,0,0), (1,1,1), (1,1,1)
 	const std::array<float, 12> rightFace{1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1,};
+	// (0,0,0), (1,0,0), (1,0,1), (0,0,1)
 	const std::array<float, 12> bottomFace{ 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1 };
 }
 
@@ -25,12 +47,24 @@ void ChunkMeshBuilder::buildMesh()
 		Block block = itr->second;
 		TexUVCoords UVCoords = TextureAtlas::getTextures(block.getId());
 
-		tryAddFaceToMesh(topFace, UVCoords.topTexCoords, position);
-		tryAddFaceToMesh(frontFace, UVCoords.sideTexCoords, position);
-		tryAddFaceToMesh(backFace, UVCoords.sideTexCoords, position);
-		tryAddFaceToMesh(leftFace, UVCoords.sideTexCoords, position);
-		tryAddFaceToMesh(rightFace, UVCoords.sideTexCoords, position);
-		tryAddFaceToMesh(bottomFace, UVCoords.bottomTexCoords, position);
+		if (!m_chunk->blockExistsAt(position + glm::vec3(0, 1, 0))) {
+			tryAddFaceToMesh(topFace, UVCoords.topTexCoords, position);
+		}
+		if (!m_chunk->blockExistsAt(position + glm::vec3(0, 0, 1))) {
+			tryAddFaceToMesh(frontFace, UVCoords.sideTexCoords, position);
+		}
+		if (!m_chunk->blockExistsAt(position + glm::vec3(0, 0, -1))) {
+			tryAddFaceToMesh(backFace, UVCoords.sideTexCoords, position);
+		}
+		if (!m_chunk->blockExistsAt(position + glm::vec3(-1, 0, 0))) {
+			tryAddFaceToMesh(leftFace, UVCoords.sideTexCoords, position);
+		}
+		if (!m_chunk->blockExistsAt(position + glm::vec3(1, 0, 0))) {
+			tryAddFaceToMesh(rightFace, UVCoords.sideTexCoords, position);
+		}
+		// if (!m_chunk->blockExistsAt(position + glm::vec3(0, -1, 0))) {
+		// 	tryAddFaceToMesh(bottomFace, UVCoords.bottomTexCoords, position);
+		// }
 		
 		itr++;
 	}

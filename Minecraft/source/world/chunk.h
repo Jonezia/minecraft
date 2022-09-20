@@ -28,6 +28,7 @@ public:
 	void saveToFile();
 
 	bool blockExistsAt(int x, int y, int z);
+	bool blockExistsAt(glm::vec3 pos);
 
 	ChunkData &getBlocks();
 	BlockID getBlockId(int x, int y, int z);
