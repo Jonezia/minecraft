@@ -3,7 +3,7 @@
 #include "world_constants.h"
 
 World::World() : texture_atlas(),
-    chunk_manager(*this) {}
+    chunk_manager(*this), map_generator(12345678) {}
 
 glm::vec3 World::setSpawn(Camera player)
 {
@@ -43,6 +43,8 @@ void World::loadSurroundingChunks(Camera player)
         return;
     }
 
+    // todo: instead of looking through all chunks and deleting,
+    // use direction of travel to only delete those that need to be deleted
     auto& chunkMap = chunk_manager.getChunks();
     for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
         Chunk &chunk = itr->second;
@@ -74,6 +76,9 @@ void World::loadSurroundingChunks(Camera player)
     }
 }
 
+void World::generateChunk(int x, int z, ChunkData &chunkData) {
+        map_generator.generateChunk(x, z, chunkData);
+}
 
 void World::render(Renderer renderer, Camera player)
 {

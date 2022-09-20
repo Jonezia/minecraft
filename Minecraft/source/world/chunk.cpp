@@ -2,6 +2,7 @@
 
 #include "world_constants.h"
 #include "chunk_mesh_builder.h"
+#include "world.h"
 
 Chunk::Chunk(World& world, VectorXZ pos) : world(&world),
 	position(glm::vec3(pos.x,0,pos.z)),
@@ -13,15 +14,9 @@ void Chunk::load()
 	// load chunk from file
 	}
 	else {
-		// Temp: replace with generator class
-		for (int x = 0; x < CHUNK_SIZE; x++) {
-			for (int z = 0; z < CHUNK_SIZE; z++) {
-				Block block(BlockID::Grass);
-				blocks.emplace(glm::vec3(x,0,z), std::move(block));
-			}
-		}
-		// end Temp
+		world->generateChunk(position.x, position.z, blocks);
 	}
+
 	loaded = true;
 }
 

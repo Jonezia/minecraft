@@ -9,7 +9,7 @@
 
 class World;
 
-using ChunkMap = std::unordered_map<VectorXZ, Chunk>;
+typedef std::unordered_map<VectorXZ, Chunk> ChunkMap;
 
 class ChunkManager
 {

@@ -26,12 +26,14 @@
     <ClCompile Include="source\renderer.cpp" />
     <ClCompile Include="source\resource_manager.cpp" />
     <ClCompile Include="source\shader.cpp" />
+    <ClCompile Include="source\SimplexNoise.cpp" />
     <ClCompile Include="source\texture.cpp" />
     <ClCompile Include="source\text_renderer.cpp" />
     <ClCompile Include="source\world\block.cpp" />
     <ClCompile Include="source\world\chunk.cpp" />
     <ClCompile Include="source\world\chunk_manager.cpp" />
     <ClCompile Include="source\world\chunk_mesh_builder.cpp" />
+    <ClCompile Include="source\world\map_generator.cpp" />
     <ClCompile Include="source\world\mesh.cpp" />
     <ClCompile Include="source\world\texture_atlas.cpp" />
     <ClCompile Include="source\world\world.cpp" />
@@ -44,6 +46,7 @@
     <ClInclude Include="source\renderer.h" />
     <ClInclude Include="source\resource_manager.h" />
     <ClInclude Include="source\shader.h" />
+    <ClInclude Include="source\SimplexNoise.h" />
     <ClInclude Include="source\texture.h" />
     <ClInclude Include="source\text_renderer.h" />
     <ClInclude Include="source\world\block.h" />
@@ -51,6 +54,7 @@
     <ClInclude Include="source\world\chunk.h" />
     <ClInclude Include="source\world\chunk_manager.h" />
     <ClInclude Include="source\world\chunk_mesh_builder.h" />
+    <ClInclude Include="source\world\map_generator.h" />
     <ClInclude Include="source\world\mesh.h" />
     <ClInclude Include="source\world\texture_atlas.h" />
     <ClInclude Include="source\world\texture_tiles.h" />
@@ -74,26 +78,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
