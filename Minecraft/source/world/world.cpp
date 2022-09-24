@@ -43,28 +43,26 @@ void World::loadSurroundingChunks(Camera player)
         return;
     }
 
-    // todo: instead of looking through all chunks and deleting,
-    // use direction of travel to only delete those that need to be deleted
-    auto& chunkMap = chunk_manager.getChunks();
-    for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
-        Chunk &chunk = itr->second;
-
-        int minX = currentChunkX - LOAD_DISTANCE;
-        int minZ = currentChunkZ - LOAD_DISTANCE;
-        int maxX = currentChunkX + LOAD_DISTANCE;
-        int maxZ = currentChunkZ + LOAD_DISTANCE;
-
-        auto location = chunk.getPosition();
-
-        if (minX > location.x || minZ > location.z || maxZ < location.z ||
-            maxX < location.x) {
-            chunk.saveToFile();
-            itr = chunkMap.erase(itr);
-            continue;
-        }
-
-        itr++;
-    }
+    // auto& chunkMap = chunk_manager.getChunks();
+    // for (auto itr = chunkMap.begin(); itr != chunkMap.end();) {
+    //     Chunk &chunk = itr->second;
+    // 
+    //     int minX = currentChunkX - LOAD_DISTANCE;
+    //     int minZ = currentChunkZ - LOAD_DISTANCE;
+    //     int maxX = currentChunkX + LOAD_DISTANCE;
+    //     int maxZ = currentChunkZ + LOAD_DISTANCE;
+    // 
+    //     auto location = chunk.getPosition();
+    // 
+    //     if (minX > location.x || minZ > location.z || maxZ < location.z ||
+    //         maxX < location.x) {
+    //         chunk.saveToFile();
+    //         itr = chunkMap.erase(itr);
+    //         continue;
+    //     }
+    // 
+    //     itr++;
+    // }
 
     for (int i = -LOAD_DISTANCE; i < LOAD_DISTANCE + 1; i++) {
         for (int j = -LOAD_DISTANCE; j < LOAD_DISTANCE + 1; j++) {
@@ -99,7 +97,8 @@ void World::render(Renderer renderer, Camera player)
 
         if (minX > location.x || minZ > location.z || maxZ < location.z ||
             maxX < location.x) {
-            itr = chunkMap.erase(itr);
+            // itr = chunkMap.erase(itr);
+            itr++;
             continue;
         }
         else {
